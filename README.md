@@ -16,6 +16,11 @@
             <img alt="ko-fi button" src="https://img.shields.io/badge/Buy_me_a_Coffee-ff5e5b?logo=ko-fi&label=Ko-fi">
         </picture>
     </a>
+    <a aria-label="Join Our Facebook community" href="https://www.facebook.com/groups/1142662969627943">
+        <picture>
+            <img alt="facebook group button" src="https://img.shields.io/badge/Join_us-0866ff?logo=facebook&label=Community">
+        </picture>
+    </a>
 </p>
 
 Add ability to quick preview the CSS classes in the Bricks editor just by hovering over the class name, without actually adding the class to the element.
