@@ -59,7 +59,7 @@ function addClass(className) {
     const activeEl = window.yabeVueGlobalPropIframe.$_activeElement.value;
     const elementNode = window.yabeVueGlobalPropIframe.$_getElementNode(activeEl);
 
-    previewStyle.innerHTML = window.yabeVueGlobalProp.$_generateCss('globalClass', getClassIdByName(className), ['block']).replaceAll('.brxe-block', '');
+    previewStyle.innerHTML = window.yabeVueGlobalProp.$_generateCss('globalClass', getClassIdByName(className), [activeEl.name]);
 
     elementNode.classList.add(className);
 }
