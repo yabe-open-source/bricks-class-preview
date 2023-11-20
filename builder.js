@@ -1,18 +1,12 @@
-const bricksIframe = window.bricksIframe || document.getElementById('bricks-builder-iframe');
+document.getElementById('bricks-builder-iframe').addEventListener('load', function () {
+    const bricksIframe = document.getElementById('bricks-builder-iframe');
 
-bricksIframe.addEventListener('load', function () {
-    if (window.yabeVueGlobalProp === undefined) {
-        window.yabeVueGlobalProp = document.querySelector('.brx-body').__vue_app__.config.globalProperties;
-        window.yabeVueGlobalPropIframe = bricksIframe.contentDocument.querySelector('.brx-body').__vue_app__.config.globalProperties;
-    }
+    const vueGlobalProp = document.querySelector('.brx-body').__vue_app__.config.globalProperties;
+    const vueGlobalPropIframe = bricksIframe.contentDocument.querySelector('.brx-body').__vue_app__.config.globalProperties;
 
-    init();
-});
+    const previewStyle = document.createElement('style');
+    previewStyle.id = 'ykf-brx-preview-global-classes';
 
-const previewStyle = document.createElement('style');
-previewStyle.id = 'ykf-brx-preview-global-classes';
-
-function init() {
     bricksIframe.contentWindow.document.head.appendChild(previewStyle);
 
     const observer = new MutationObserver((mutations) => {
@@ -53,26 +47,26 @@ function init() {
         attributes: true,
         attributeFilter: ['class']
     });
-}
 
-function addClass(className) {
-    const activeEl = window.yabeVueGlobalPropIframe.$_activeElement.value;
-    const elementNode = window.yabeVueGlobalPropIframe.$_getElementNode(activeEl);
+    function addClass(className) {
+        const activeEl = vueGlobalPropIframe.$_activeElement.value;
+        const elementNode = vueGlobalPropIframe.$_getElementNode(activeEl);
 
-    previewStyle.innerHTML = window.yabeVueGlobalProp.$_generateCss('globalClass', getClassIdByName(className), [activeEl.name]);
+        previewStyle.innerHTML = vueGlobalProp.$_generateCss('globalClass', getClassIdByName(className), [activeEl.name]);
 
-    elementNode.classList.add(className);
-}
+        elementNode.classList.add(className);
+    }
 
-function resetClass() {
-    const activeEl = window.yabeVueGlobalPropIframe.$_activeElement.value;
-    const elementNode = window.yabeVueGlobalPropIframe.$_getElementNode(activeEl);
+    function resetClass() {
+        const activeEl = vueGlobalPropIframe.$_activeElement.value;
+        const elementNode = vueGlobalPropIframe.$_getElementNode(activeEl);
 
-    const elementClasses = window.yabeVueGlobalPropIframe.$_getElementClasses(activeEl);
+        const elementClasses = vueGlobalPropIframe.$_getElementClasses(activeEl);
 
-    elementNode.classList.value = elementClasses.join(' ');
-}
+        elementNode.classList.value = elementClasses.join(' ');
+    }
 
-function getClassIdByName(className) {
-    return window.yabeVueGlobalProp.$_globalClasses.value.find((globalClass) => globalClass.name === className).id;
-}
+    function getClassIdByName(className) {
+        return vueGlobalProp.$_globalClasses.value.find((globalClass) => globalClass.name === className).id;
+    }
+});
