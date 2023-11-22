@@ -1,5 +1,5 @@
 document.getElementById('bricks-builder-iframe').addEventListener('load', function () {
-    const bricksIframe = document.getElementById('bricks-builder-iframe');
+    const bricksIframe = this;
 
     const vueGlobalProp = document.querySelector('.brx-body').__vue_app__.config.globalProperties;
     const vueGlobalPropIframe = bricksIframe.contentDocument.querySelector('.brx-body').__vue_app__.config.globalProperties;
