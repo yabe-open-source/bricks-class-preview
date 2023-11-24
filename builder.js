@@ -5,7 +5,7 @@ document.getElementById('bricks-builder-iframe').addEventListener('load', functi
     const vueGlobalPropIframe = bricksIframe.contentDocument.querySelector('.brx-body').__vue_app__.config.globalProperties;
 
     const previewStyle = document.createElement('style');
-    previewStyle.id = 'ykf-brx-preview-global-classes';
+    previewStyle.id = 'yos-brx-preview-global-classes';
 
     bricksIframe.contentWindow.document.head.appendChild(previewStyle);
 
